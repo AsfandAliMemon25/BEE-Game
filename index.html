@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/bee.css" />
+	<script type="text/javascript" src="javascript/three.js"></script>
+	<script type="text/javascript" src="javascript/bee.js"></script>
+</head>
+<script type="x-shader/x-vertex" id="vertexShaderId">
+	varying vec2 vUv;
+	void main() {
+		vUv = uv;
+		gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+	}
+	</script>
+<script type="x-shader/x-vertex" id="fragmentShaderId">
+	varying vec2 vUv;
+	void main() {
+		gl_FragColor = vec4( vec3( vUv, 0. ), 1. );
+	}
+	</script>
+
+<body>
+	<div id="preScene" align="center">
+		<div>
+
+			<h1 style="font-size: 5rem; color:#E44D26; font-family:Broadway;">BEE</h1><br><br>
+
+			<h1 style="font-size: 1rem;color: rgb(255, 255, 255)">Move the Fly by UP and DOWN keyboard button</h1>
+			<h1 style="font-size: 1rem;color: rgb(255, 255, 255)">Stop the game with PRESSING SPACE</h1><br><br>
+
+			<h1 style="font-size: 0.7rem; color:#bdc3c7">ASFAND ALI</h1><br><br>
+
+		</div>
+		<div id="t01" style="width:100%; height:100%">
+			<button class="myButtonStart" id="myButtonStart">START</button>
+		
+			<audio id="playAudio">
+				<source src="audio/audio.mp3" type="audio/mp3">
+			</audio>
+
+			<audio id="eatcoin">
+				<source src="audio/coin.mp3" type="audio/wav">
+			</audio>
+
+			<audio id="gameover">
+				<source src="audio/gameover.mp3" type="audio/mp3">
+			</audio>
+		
+		</div>
+
+	</div>
+	<div id="thescene">
+		<div>
+			<table id="t01" align="right">
+				<tr>
+					<th>Score</th>
+					<th>Level</th>
+					<th>Life</th>
+				</tr>
+				<tr>
+					<td id="score">0</td>
+					<td id="level">0</td>
+					<td id="life">3</td>
+				</tr>
+			</table>
+		</div><button type="button" class="myButton" id="pageReset">Stop</button>
+		<div class="msgDysplay message--gameOverStopPause" id="gameOver">!!!! GAME OVER !!!!</div>
+		<div class="msgDysplay message--totalScore" id="totalScore">Total Score: </div>
+		<div class="msgDysplay message--actualLevel" id="actualLevel">Level: </div>
+		<div class="msgDysplayNotUpper message--lifePenalty" id="alarmmsg">Loss Life!!!</div>
+		<div class="msgDysplayNotUpper message--pointWin" id="pointWin">Score increased!</div>
+		<div class="msgDysplay message--gameOverStopPause" id="stopPauseGame">Press Space to Resume<br><br></div>
+	</div>
+</body>
+
+</html>
